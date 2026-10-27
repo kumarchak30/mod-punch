@@ -1,0 +1,675 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Press+Start+2P&display=swap");
+@import "tailwindcss";
+
+:root {
+  --color-intro: #072e25;
+  --color-intro-deep: #062a22;
+  --color-intro-shape: #0a4538;
+  --color-panel: #121522;
+  --color-surface: #10131f;
+  --color-surface-raised: #313b50;
+  --color-border: #202536;
+  --color-primary: #22c989;
+  --color-primary-hover: #31dda0;
+  --color-white: #f5f7f7;
+  --color-text: #cbd0dc;
+  --color-muted: #7f899b;
+  --color-subtle: #5b6374;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --space-page: clamp(2rem, 5.35vw, 4.5rem);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--color-panel);
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    color: var(--color-white);
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.intro-panel {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--color-intro);
+}
+
+.intro-panel::after {
+  position: absolute;
+  right: 0;
+  bottom: -13rem;
+  width: 26rem;
+  height: 26rem;
+  border: 4.75rem solid rgba(10, 69, 56, 0.36);
+  content: "";
+  transform: translateX(44%);
+}
+
+.decorative-squares {
+  position: absolute;
+  top: -12.5rem;
+  right: -6.5rem;
+  width: 21rem;
+  height: 21rem;
+  border: 1rem solid rgba(10, 69, 56, 0.62);
+  transform: rotate(12deg);
+}
+
+.decorative-squares::after {
+  position: absolute;
+  inset: 2rem;
+  border: 1px solid rgba(34, 201, 137, 0.08);
+  content: "";
+}
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 3.15rem var(--space-page) 3.45rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 3.7rem;
+  height: 3.7rem;
+  place-items: center;
+  border: 1px solid rgba(34, 201, 137, 0.5);
+  border-radius: var(--radius-lg);
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  stroke: var(--color-primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.wordmark {
+  display: flex;
+  margin-left: 1rem;
+  flex-direction: column;
+}
+
+.wordmark strong {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-rendering: geometricPrecision;
+}
+
+.wordmark strong span,
+.wordmark sup {
+  color: var(--color-primary);
+}
+
+.wordmark sup {
+  position: relative;
+  top: -0.4em;
+  margin-left: 0.18rem;
+  font-size: 0.43rem;
+  letter-spacing: 0;
+}
+
+.wordmark small {
+  margin-top: 0.55rem;
+  color: var(--color-muted);
+  font-size: 0.52rem;
+  letter-spacing: 0.34em;
+}
+
+.intro-copy {
+  margin-top: clamp(4.7rem, 10vh, 7rem);
+}
+
+.eyebrow {
+  margin: 0 0 1.7rem;
+  color: var(--color-primary);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+.intro-copy h1 {
+  margin: 0;
+  color: var(--color-white);
+  font-size: clamp(2.7rem, 4.2vw, 4.1rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.17;
+}
+
+.description {
+  margin: 2rem 0 0;
+  color: #77968c;
+  font-size: clamp(0.9rem, 1.18vw, 1.08rem);
+  line-height: 1.75;
+}
+
+.tagline {
+  margin: auto 0 0;
+  color: rgba(119, 150, 140, 0.72);
+  font-size: 0.7rem;
+}
+
+.login-panel {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  background: var(--color-panel);
+  padding: clamp(2rem, 7.5vh, 4.8rem) 2rem;
+}
+
+.login-wrap {
+  width: min(100%, 32rem);
+}
+
+.login-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.85rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1.15;
+}
+
+.login-heading p {
+  margin: 0.6rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.login-heading .form-eyebrow {
+  margin: 0 0 1.1rem;
+  color: var(--color-primary);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+}
+
+.tabs {
+  display: grid;
+  margin-top: 2.75rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  padding: 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.tab {
+  display: flex;
+  height: 3.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--color-muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.tab:hover {
+  color: var(--color-white);
+}
+
+.tab-active {
+  color: var(--color-white);
+  background: var(--color-surface-raised);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tab-icon,
+.icon-small {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.icon-small {
+  stroke: var(--color-primary);
+}
+
+.signin-card {
+  margin-top: 2.05rem;
+  padding: 1.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.signin-details {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+}
+
+.signin-details h3 {
+  margin: 0.2rem 0 0.4rem;
+  font-size: 0.96rem;
+  font-weight: 500;
+}
+
+.signin-details p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.79rem;
+  line-height: 1.65;
+}
+
+.microsoft-icon {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex: 0 0 auto;
+  grid-template-columns: repeat(2, 0.62rem);
+  grid-template-rows: repeat(2, 0.62rem);
+  place-content: center;
+  gap: 0.12rem;
+  border-radius: var(--radius-sm);
+  background: #1d2535;
+}
+
+.microsoft-icon i:nth-child(1) {
+  background: #f35325;
+}
+
+.microsoft-icon i:nth-child(2) {
+  background: #81bc06;
+}
+
+.microsoft-icon i:nth-child(3) {
+  background: #05a6f0;
+}
+
+.microsoft-icon i:nth-child(4) {
+  background: #ffba08;
+}
+
+.primary-button {
+  display: flex;
+  width: 100%;
+  height: 3.45rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.65rem;
+  gap: 1.1rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  color: #06251d;
+  background: var(--color-primary);
+  cursor: pointer;
+  font-size: 0.94rem;
+  font-weight: 500;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.primary-button:hover {
+  background: var(--color-primary-hover);
+}
+
+.primary-button:active {
+  transform: translateY(1px);
+}
+
+.arrow-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.security-note {
+  margin: 1.45rem 0 0;
+  color: var(--color-subtle);
+  font-size: 0.65rem;
+  text-align: center;
+}
+
+.divider {
+  height: 1px;
+  margin-top: 2.9rem;
+  background: var(--color-border);
+}
+
+.signup {
+  margin: 2.7rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.74rem;
+  text-align: center;
+}
+
+.signup a,
+.text-button {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.signup a:hover,
+.text-button:hover {
+  text-decoration: underline;
+}
+
+.text-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.email-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-card label,
+.field label {
+  margin-bottom: 0.65rem;
+  color: var(--color-text);
+  font-size: 0.78rem;
+}
+
+.email-card input,
+.field input {
+  width: 100%;
+  height: 3.2rem;
+  padding: 0 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  color: var(--color-white);
+  background: var(--color-panel);
+  font-size: 0.86rem;
+}
+
+.email-card input:focus,
+.field input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(34, 201, 137, 0.12);
+}
+
+.signup-card {
+  margin-top: 2.5rem;
+  padding: 1.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field + .field {
+  margin-top: 1.2rem;
+}
+
+.signup-button {
+  margin-top: 1.6rem;
+}
+
+.terms,
+.success-message {
+  margin: 1.2rem 0 0;
+  color: var(--color-subtle);
+  font-size: 0.66rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.terms a {
+  color: var(--color-muted);
+}
+
+.success-message {
+  color: var(--color-primary);
+}
+
+.signup-divider {
+  margin-top: 2.2rem;
+}
+
+.setup-page {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  padding: clamp(2.2rem, 5.2vw, 4.5rem) 1.5rem;
+  background: var(--color-panel);
+}
+
+.setup-wrap {
+  width: min(100%, 36rem);
+}
+
+.setup-heading h1 {
+  margin: 0;
+  color: var(--color-white);
+  font-size: clamp(2rem, 3vw, 2.65rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.15;
+}
+
+.setup-heading p {
+  margin: 0.65rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.setup-icon {
+  display: grid;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-top: 2.6rem;
+  place-items: center;
+  border: 1px solid rgba(34, 201, 137, 0.35);
+  border-radius: var(--radius-lg);
+  background: rgba(7, 46, 37, 0.72);
+}
+
+.monitor-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  stroke: var(--color-primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.setup-intro {
+  margin: 2.5rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.setup-form {
+  margin-top: 2rem;
+}
+
+.setup-form .field + .field {
+  margin-top: 1.25rem;
+}
+
+.setup-form input,
+.setup-form select {
+  width: 100%;
+  height: 3.35rem;
+  padding: 0 1rem;
+  border: 1px solid #30364a;
+  border-radius: var(--radius-md);
+  outline: none;
+  color: var(--color-white);
+  background: var(--color-surface);
+  font-size: 0.82rem;
+}
+
+.setup-form select {
+  color-scheme: dark;
+}
+
+.setup-form input::placeholder {
+  color: #454c60;
+}
+
+.setup-form input:focus,
+.setup-form select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(34, 201, 137, 0.12);
+}
+
+.setup-row {
+  display: grid;
+  margin-top: 1.25rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.setup-submit {
+  margin-top: 1.5rem;
+}
+
+.skip-button {
+  display: block;
+  margin: 1.25rem auto 0;
+  padding: 0.35rem 0.5rem;
+  border: 0;
+  color: var(--color-subtle);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.77rem;
+}
+
+.skip-button:hover {
+  color: var(--color-text);
+}
+
+.setup-success {
+  margin: 0.8rem 0 0;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+@media (max-width: 780px) {
+  .app-shell {
+    display: block;
+  }
+
+  .intro-panel,
+  .intro-content,
+  .login-panel {
+    min-height: auto;
+  }
+
+  .intro-content {
+    padding: 2rem 1.5rem 3.5rem;
+  }
+
+  .intro-copy {
+    margin-top: 4.5rem;
+  }
+
+  .intro-copy h1 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .tagline {
+    margin-top: 4rem;
+  }
+
+  .login-panel {
+    padding: 3.5rem 1.5rem 4rem;
+  }
+
+  .decorative-squares {
+    opacity: 0.65;
+  }
+}
+
+@media (max-width: 420px) {
+  .desktop-break {
+    display: none;
+  }
+
+  .brand-mark {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .wordmark strong {
+    font-size: 0.67rem;
+  }
+
+  .signin-card {
+    padding: 1.25rem;
+  }
+
+  .setup-page {
+    padding-inline: 2.35rem;
+  }
+
+  .setup-row {
+    gap: 0.9rem;
+  }
+}
