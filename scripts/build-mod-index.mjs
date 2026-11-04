@@ -54,9 +54,29 @@ let LOADERS = new Set(
 // holds what .test(v) returns using regular expressions to identify whether the input examined is a proper minecraft version release (used to identify compatibility later on)
 const isRelease = (v) => /^\d+\.\d+(\.\d+)?$/.test(v);
 
-
 // creates a promise that finishes after a delay (only hapens where you call it with await)
 const sleep = (ms) => new Promise((r) => setTimeout(r,ms));
 
+// getJson(url) fetches one url and returns parsed JSON
+async function getJson(url) {
+    for (let attempt = 1; attempt <= 6; attempt++) {
+        try {
+            const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+            if (res.status === 429) {
+                const wait = Number(res.headers.get('retry-after') || res.headers.get('x-ratelimit-reset') || 30);
+                console.warn(`429 rate limited. Waiting ${wait}s...`);
+                await sleep(wait * 1000 + 500);
+                continue;
+            }
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.json();
+        }
+        catch (err) {
+            console.warn(`Attempt ${attempt} failed: ${err.message}`);
+            await sleep(2000 * attempt);
+        }
+    }
+    throw new Error(`Giving up on ${url}`);
+}
 
-
+fs.mkdirSync(OUT_DIR, { recursive: true });
