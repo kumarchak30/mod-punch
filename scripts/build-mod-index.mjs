@@ -32,3 +32,21 @@ const MAX_PAGES = Number(process.env.MAX_PAGES || Infinity);
 // creates gap between requests to have time for processing them
 const DELAY_MS = 250; 
 
+/* LOADERS + TAGS CATEGORIES */
+let LOADERS = new Set(
+    [
+        'fabric',
+        'forge',
+        'neoforge',
+        'quilt',
+        'babric',
+        'bta-babric',
+        'legacy-fabric',
+        'liteloader',
+        'modloader',
+        'nilloader',
+        'ornithe',
+        'rift'
+    ]
+);
+
