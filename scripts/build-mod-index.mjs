@@ -50,3 +50,13 @@ let LOADERS = new Set(
     ]
 );
 
+
+// holds what .test(v) returns using regular expressions to identify whether the input examined is a proper minecraft version release (used to identify compatibility later on)
+const isRelease = (v) => /^\d+\.\d+(\.\d+)?$/.test(v);
+
+
+// creates a promise that finishes after a delay (only hapens where you call it with await)
+const sleep = (ms) => new Promise((r) => setTimeout(r,ms));
+
+
+
