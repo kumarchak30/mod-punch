@@ -82,13 +82,14 @@ async function getJson(url) {
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 
-// ensures previous IDs are saved and go to next offset
+// Resume support: load IDs already saved and the next offset, so a rerun continues where it stopped
 const seen = new Set();
 if (fs.existsSync(OUT_FILE)) {
-  for (const line of fs.readFileSync(OUT_FILE, 'utf8').split('\n')) {
-    if (line.trim()) seen.add(JSON.parse(line).project_id);
-  }
+    for (const line of fs.readFileSync(OUT_FILE, 'utf8').split('\n')) {
+        if (line.trim()) seen.add(JSON.parse(line).project_id);
+    }
 }
+
 let offset = 0;
 if (fs.existsSync(PROGRESS_FILE)) offset = JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf8')).offset || 0;
 console.log(`Starting at offset ${offset}, ${seen.size} mods already saved.`);
@@ -96,3 +97,4 @@ console.log(`Starting at offset ${offset}, ${seen.size} mods already saved.`);
 const out = fs.createWriteStream(OUT_FILE, { flags: 'a' });
 let total = Infinity;
 let pages = 0;
+
