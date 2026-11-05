@@ -82,7 +82,7 @@ async function getJson(url) {
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 
-// Resume support: load IDs already saved and the next offset, so a rerun continues where it stopped
+// Resume support: load IDs already saved and the next offset (rerun continues where it stopped)
 const seen = new Set();
 if (fs.existsSync(OUT_FILE)) {
     for (const line of fs.readFileSync(OUT_FILE, 'utf8').split('\n')) {
@@ -98,3 +98,44 @@ const out = fs.createWriteStream(OUT_FILE, { flags: 'a' });
 let total = Infinity;
 let pages = 0;
 
+// main loop that pages through all of Modrinth's mods so it fetches one page of mod results saving each new mod to the file recording its progress until it runs out of pages
+while (offset < total && pages < MAX_PAGES) {
+    const params = new URLSearchParams({
+        facets: JSON.stringify([['project_type:mod']]),
+        limit: String(PAGE_SIZE),
+        offset: String(offset),
+
+        // provides stable order in paging
+        index: 'downloads', 
+    });
+    const data = await getJson(`${BASE_URL}/v2/search?${params}`);
+    total = data.total_hits;
+    if (!data.hits.length) break;
+
+    for (const h of data.hits) {
+        // results may shift while paging
+        if (seen.has(h.project_id)) continue; 
+        seen.add(h.project_id);
+        const cats = h.categories || [];
+        out.write(JSON.stringify({
+        project_id: h.project_id,
+        slug: h.slug,
+        title: h.title,
+        description: h.description,
+        loaders: cats.filter((c) => LOADERS.has(c)),
+        tags: cats.filter((c) => !LOADERS.has(c)),
+        versions: h.versions || [],
+        client_side: h.client_side,
+        server_side: h.server_side,
+        downloads: h.downloads,
+        date_modified: h.date_modified,
+        latest_version: h.latest_version,
+        }) + '\n');
+    }
+
+    offset += PAGE_SIZE;
+    pages++;
+    fs.writeFileSync(PROGRESS_FILE, JSON.stringify({ offset, total }));
+    if (pages % 10 === 0) console.log(`offset ${offset}/${total}, ${seen.size} unique mods`);
+    await sleep(DELAY_MS);
+}
