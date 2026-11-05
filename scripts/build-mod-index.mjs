@@ -139,3 +139,20 @@ while (offset < total && pages < MAX_PAGES) {
     if (pages % 10 === 0) console.log(`offset ${offset}/${total}, ${seen.size} unique mods`);
     await sleep(DELAY_MS);
 }
+
+
+await new Promise((r) => out.end(r));
+
+// count rows where one row is one mod with one Minecraft version
+let mods = 0, allRows = 0, releaseRows = 0;
+for (const line of fs.readFileSync(OUT_FILE, 'utf8').split('\n')) {
+    if (!line.trim()) continue;
+    const m = JSON.parse(line);
+    mods++;
+    allRows += m.versions.length;
+    releaseRows += m.versions.filter(isRelease).length;
+}
+console.log(`\nDone with this run. Mods: ${mods}`);
+console.log(`Rows (mod x MC version), all versions:  ${allRows}`);
+console.log(`Rows (mod x MC version), releases only: ${releaseRows}`);
+console.log(`File size: ${(fs.statSync(OUT_FILE).size / 1e6).toFixed(1)} MB`);
