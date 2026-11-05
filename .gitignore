@@ -27,4 +27,4 @@ dist-ssr
 !.env.example
 
 # generated data
-.data/*
+.data/
