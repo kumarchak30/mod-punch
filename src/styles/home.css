@@ -2,20 +2,20 @@
 
 /* page wrapper scoped in a way that will not interfere or clash with register/login pages */
 .home {
-		min-height: 100vh;
-		background: #0b0e14;
-		color: #e8ebf2; 
-		font-family: "Inter Tight", sans-serif;
+	min-height: 100vh;
+	background: #0b0e14;
+	color: #e8ebf2; 
+	font-family: "Inter Tight", sans-serif;
 }
 
 .home *, .home *::before, .home *::after {
-		box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .home main { 
-		width: min(1240px, calc(100% - 48px)); 
-		margin: 0 auto; 
-		padding: 40px 0 90px; 
+	width: min(1240px, calc(100% - 48px)); 
+	margin: 0 auto; 
+	padding: 40px 0 90px; 
 }
 
 
@@ -24,34 +24,34 @@
     chip, button, button:hover, button:active
 */
 .category-chips {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 7px;
-		padding: 22px 0 28px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+	padding: 22px 0 28px;
 }
-		
+
 .category-chips button { 
-		min-height: 31px; 
-		padding: 0 13px; 
-		border: 1px solid #293140; 
-		border-radius: 6px; 
-		color: #7b8698; 
-		background: #11151d; 
-		font: 600 11px "Inter Tight", sans-serif; 
-		cursor: pointer; 
-		transition: 150ms ease;
+	min-height: 31px; 
+	padding: 0 13px; 
+	border: 1px solid #293140; 
+	border-radius: 6px; 
+	color: #7b8698; 
+	background: #11151d; 
+	font: 600 11px "Inter Tight", sans-serif; 
+	cursor: pointer; 
+	transition: 150ms ease;
 }
 
 .category-chips button:hover {
-		color: #c6ced9; 
-		border-color: #3b4658; 
+	color: #c6ced9; 
+	border-color: #3b4658; 
 }
 
 .category-chips button.active { 
-		color: #bffbf3; 
-		border-color: rgba(45,212,191,.45); 
-		background: rgba(45,212,191,.08); 
-		box-shadow: inset 0 0 14px rgba(45,212,191,.025); 
+	color: #bffbf3; 
+	border-color: rgba(45,212,191,.45); 
+	background: rgba(45,212,191,.08); 
+	box-shadow: inset 0 0 14px rgba(45,212,191,.025); 
 }
 
 
@@ -62,54 +62,55 @@
 
 /* mod-card section */
 .mod-card { 
-		min-width: 0; 
-		min-height: 228px; 
-		display: flex; 
-		flex-direction: column; 
-		padding: 17px; 
-		border: 1px solid #232a38; 
-		border-radius: 9px; 
-		background: radial-gradient(circle at 15% 0, rgba(45,212,191,.05), transparent 35%), linear-gradient(145deg, rgba(22,27,38,.94), rgba(16,20,28,.97));
-		transition: transform 170ms ease, border-color 170ms ease, box-shadow 170ms ease; 
+	min-width: 0; 
+	min-height: 228px; 
+	display: flex; 
+	flex-direction: column; 
+	padding: 17px; 
+	border: 1px solid #232a38; 
+	border-radius: 9px; 
+	background: radial-gradient(circle at 15% 0, rgba(45,212,191,.05), transparent 35%), linear-gradient(145deg, rgba(22,27,38,.94), rgba(16,20,28,.97));
+	transition: transform 170ms ease, border-color 170ms ease, box-shadow 170ms ease; 
 }
 
 .mod-card:hover {
-		transform: translateY(-3px); 
-		border-color: #384457; 
-		box-shadow: 0 12px 28px rgba(0,0,0,.23); 
+	transform: translateY(-3px); 
+	border-color: #384457; 
+	box-shadow: 0 12px 28px rgba(0,0,0,.23); 
 }
 
 .mod-card-top { 
-		display: flex; 
-		align-items: flex-start; 
-		justify-content: space-between; 
-		gap: 10px; 
+	display: flex; 
+	align-items: flex-start; 
+	justify-content: space-between; 
+	gap: 10px; 
 }
 
 /* mod-mark section */
 .mod-mark { 
-		width: 42px; 
-		height: 42px; 
-		flex: 0 0 auto; 
-		display: grid; 
-		place-items: center; 
-		overflow: hidden; 
-		position: relative; 
-		border: 1px solid rgba(96,218,224,.25); 
-		border-radius: 8px; 
-		color: #60dae0; 
-		background: #15343c; 
-		font: 800 12px "Inter Tight", sans-serif;
+	width: 42px; 
+	height: 42px; 
+	flex: 0 0 auto; 
+	display: grid; 
+	place-items: center; 
+	overflow: hidden; 
+	position: relative; 
+	border: 1px solid rgba(96,218,224,.25); 
+	border-radius: 8px; 
+	color: #60dae0; 
+	background: #15343c; 
+	font: 800 12px "Inter Tight", sans-serif;
 }
 
 .mod-mark::after { 
-		content: "";
-		position: absolute;
-		width: 20px;
-		height: 20px;
-		border: 1px solid currentColor;
-		opacity: .2;
-		transform: rotate(45deg);
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border: 1px solid currentColor;
+	opacity: .2;
+	transform: rotate(45deg);
 }
 
 .mod-mark span { z-index: 1; }
+
