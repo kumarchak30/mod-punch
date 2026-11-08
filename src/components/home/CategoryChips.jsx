@@ -26,3 +26,4 @@ export default function CategoryChips({ activeCategory, onChange }) {
         </div>
     )
 }
+
