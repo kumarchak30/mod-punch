@@ -41,7 +41,7 @@ export function getAllVersions() {
     keeps mods in the chosen category, and returns one page of results plus the total count
 */ 
 export function getModsForVersion(version, { category = "All", offset = 0, limit = 20 } = {}) {
-    const tag = category.toLowerCase()
+    const tag = category.toLowerCase().replaceAll(" ", "-")
     const options = {
         stopWhen: (key) => key.version !== version,
         filter: category === "All" ? undefined : (key, modIndex) => mods[modIndex].tags.includes(tag),
