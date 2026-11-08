@@ -142,3 +142,31 @@
 	font: 500 10px "Inter Tight", sans-serif; 
 	white-space: nowrap; 
 }
+
+
+/* tag-list + loader-list */
+.tag-list { 
+	display: flex; 
+	flex-wrap: wrap; 
+	gap: 5px;
+	margin-top: 14px; 
+}
+
+.tag-list span { 
+	padding: 3px 6px; 
+	border: 1px solid #2c3544; 
+	border-radius: 4px; 
+	color: #8490a2; 
+	background: #181e28; 
+	font: 600 9px "Inter Tight", sans-serif; 
+	letter-spacing: .4px;
+	text-transform: uppercase; 
+}
+
+.loader-list {
+	margin-top: auto;
+	padding-top: 15px;
+	color: #566274;
+	font: 500 10px "Inter Tight", sans-serif;
+	text-transform: capitalize;
+}
