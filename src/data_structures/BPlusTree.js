@@ -98,7 +98,7 @@ export class BPlusTree {
         return undefined;
     }
 
-    insert(key, value) {
+    insertNode(key, value) {
         const split = this.insertInto(this.root, key, value);
 
         // make new root above the two halves
@@ -108,6 +108,21 @@ export class BPlusTree {
             newRoot.children.push(this.root, split.right);
             this.root = newRoot;
         }
+    }   
+
+
+    deleteNode(key) {
+        const leaf = this.findLeaf(key);
+        const i = this.lowerBound(leaf.keys, key);
+
+        // deletes a node of the specific key, and does not take from siblings and does not merge any existing nodes
+        if (i < leaf.keys.length && this.compare(leaf.keys[i], key) === 0) {
+            leaf.keys.splice(i, 1);
+            leaf.values.splice(i, 1);
+            this.size--;
+            return true; // if found and removed
+        }
+        return false; // invalid key, key not found, etc.
     }
 
     /* 
