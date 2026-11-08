@@ -24,8 +24,18 @@ export default function HomePage() {
     return (
         <div className="home">
             <main>
-                <h1>Mods for {version}</h1>
-                <p>{total} results</p>
+            <header className="home-heading">
+                <div className="home-eyebrow">
+                    <span/>
+                    MOD BROWSER
+                </div>
+
+                <div className="home-title-row">
+                    <h1>Mods for {version}</h1>
+                    <span className="home-result-count">{total.toLocaleString()} results</span>
+                </div>
+                <p>Most downloaded first. Pick a category to narrow it down.</p>
+            </header>
                 <CategoryChips activeCategory={category} onChange={setCategory} />
                 <ModGrid mods={results} />
             </main>
