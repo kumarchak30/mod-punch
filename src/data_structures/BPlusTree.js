@@ -12,3 +12,14 @@ export function compareKeys(a, b) {
 
     return a.modIndex - b.modIndex;
 }
+
+export function startOfVersion(version) {
+    return { version, downloads: Infinity, modIndex: -1 }; // set modIndex default to -1 to demonstrate it does not already have an identified position
+}
+class LeafNode {
+    constructor() {
+        this.isLeaf = true;
+        this.keys = []; // values[i] correspond to keys[i]
+        this.next = null; // right leaf
+    }
+}
