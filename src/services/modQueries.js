@@ -30,3 +30,7 @@ export function loadModIndex() {
     if (!loading) loading = buildIndex()
     return loading
 }
+
+export function getAllVersions() {
+    return versions
+}
