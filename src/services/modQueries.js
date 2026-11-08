@@ -16,8 +16,8 @@ async function buildIndex() {
 
     mods.forEach((mod, modIndex) => {
         for (const version of mod.versions) {
-        tree.insertNode({ version, downloads: mod.downloads, modIndex }, modIndex)
-        versionSet.add(version)
+            tree.insertNode({ version, downloads: mod.downloads, modIndex }, modIndex)
+            versionSet.add(version)
         }
     })
 
@@ -35,7 +35,11 @@ export function getAllVersions() {
     return versions
 }
 
-// goes through category, checks offset and keeps into account the limit and then accesses modIndex to then provide results of the total mods
+/* 
+    getModsForVersion:
+    scans the tree for one version (already sorted by downloads),
+    keeps mods in the chosen category, and returns one page of results plus the total count
+*/ 
 export function getModsForVersion(version, { category = "All", offset = 0, limit = 20 } = {}) {
     const tag = category.toLowerCase()
     const options = {
