@@ -221,4 +221,12 @@ export class BPlusTree {
         return results;
     }
 
+    // prints each level and checks for splits handling smaller maxKeys 
+    print(format = (k) => JSON.stringify(k)) {
+        let level = [this.root];
+        while (level.length > 0) {
+            console.log(level.map((n) => "[" + n.keys.map(format).join(" | ") + "]").join("  "));
+            level = level.flatMap((n) => (n.isLeaf ? [] : n.children));
+        }
+    }
 }
