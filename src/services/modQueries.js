@@ -41,6 +41,8 @@ export function getAllVersions() {
     keeps mods in the chosen category, and returns one page of results plus the total count
 */ 
 export function getModsForVersion(version, { category = "All", offset = 0, limit = 20 } = {}) {
+    if (!tree) return { results: [], total: 0 } // tree not built yet (or reset by hot reload)
+
     const tag = category.toLowerCase().replaceAll(" ", "-")
     const options = {
         stopWhen: (key) => key.version !== version,
