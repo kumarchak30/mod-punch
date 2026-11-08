@@ -114,3 +114,9 @@
 
 .mod-mark span { z-index: 1; }
 
+.download-count { 
+	padding-top: 3px; 
+	color: #5f6a7c;
+	font: 500 10px "Inter Tight", sans-serif; 
+	white-space: nowrap; 
+}
