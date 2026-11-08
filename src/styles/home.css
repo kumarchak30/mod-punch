@@ -448,6 +448,35 @@
 	margin: 0; 
 	font-size: 11px; 
 }
+/* styling for loading more mods */
+.home-load-more {
+    width: fit-content;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 28px auto 0;
+    padding: 0 17px;
+    border: 1px solid #344052;
+    border-radius: 7px;
+    color: #c4ccd8;
+    background: #151a24;
+    font: 600 12px "Inter Tight", sans-serif;
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.home-load-more:hover {
+    transform: translateY(-1px);
+    border-color: rgba(45,212,191,.5);
+    color: #d7fff9;
+    background: #192029;
+}
+
+.home-load-more span {
+    color: #2dd4bf;
+    font: 600 10px "Inter Tight", sans-serif;
+}
 
 /* RESPONSIVE GRID TO DISPLAY THE MODS */
 @media (max-width: 980px) { 
