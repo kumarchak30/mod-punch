@@ -3,11 +3,13 @@ const categories = [
     "Optimization",
     "Utility",
     "Adventure",
-    "Technology",
+    "Decoration",
+    "Game Mechanics",
     "Worldgen",
-    "Visual",
+    "Technology",
+    "Mobs",
+    "Magic",
 ]
-
 // takes mod categories and then changes when user clicks other category
 export default function CategoryChips({ activeCategory, onChange }) {
     return (
