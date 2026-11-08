@@ -46,5 +46,7 @@ export function useSplayHistory(storageKey, { limit = 10, order = "recent" } = {
     const items = order === "mostAccessed" ? tree.mostAccessed(limit) : tree.mostRecent(limit);
     const all = tree.inOrder(); // every entry, for stats like category affinity
 
-    return { items, all, touch, access, remove, size: tree.size, version };
+    const has = (key) => tree.has(key);
+
+    return { items, all, has, touch, access, remove, size: tree.size, version };
 }

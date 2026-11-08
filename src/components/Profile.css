@@ -448,7 +448,7 @@
 
 .affinity span,
 .affinity code { font-size: 12px; }
-.affinity span { color: rgb(139, 149, 165); }
+.affinity span { color: rgb(139, 149, 165); text-transform: capitalize; }
 .affinity code { color: rgb(104, 116, 135); }
 
 .affinity-track {

@@ -37,6 +37,9 @@ export default function TopBar({ versions, version, onVersionChange }) {
 
             <div className="home-topbar-actions">
                 <VersionPicker versions={versions} value={version} onChange={onVersionChange} />
+                <Link className="home-sign-out home-profile-link" to="/profile">
+                    Profile
+                </Link>
                 <button type="button" className="home-sign-out" onClick={handleSignOut}>
                     Sign out
                 </button>

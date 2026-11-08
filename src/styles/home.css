@@ -569,3 +569,52 @@
     align-items: flex-start;
     gap: 9px;
 }
+
+/*
+    PROFILE LINK + SAVE BUTTON (profile page integration)
+    profile link reuses the sign-out button look
+*/
+.home-profile-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.mod-card-footer {
+    margin-top: auto;
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.mod-card-footer .loader-list {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.mod-save {
+    margin-left: auto;
+    flex-shrink: 0;
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid #293140;
+    border-radius: 6px;
+    color: #939dad;
+    background: #131821;
+    font: 600 11px "Inter Tight", sans-serif;
+    cursor: pointer;
+    transition: 150ms ease;
+}
+
+.mod-save:hover {
+    color: #d8e1ec;
+    border-color: #3b4658;
+}
+
+.mod-save.saved {
+    color: #6ee7b7;
+    border-color: #1f5f4b;
+    background: #0d241e;
+}
