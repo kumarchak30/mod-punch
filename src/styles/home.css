@@ -18,6 +18,62 @@
 	padding: 40px 0 90px; 
 }
 
+/* 
+	HOME HEADING:
+	heading, eyebrow, eyebrow span, title-row, h1, count, p
+*/
+.home-heading {
+	padding-bottom: 26px;
+	border-bottom: 1px solid #232a38;
+}
+
+.home-eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	color: #657184;
+	font: 600 10px "Inter Tight", sans-serif;
+	letter-spacing: 1.5px;
+}
+
+.home-eyebrow span {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: #2dd4bf;
+	box-shadow: 0 0 8px rgba(45,212,191,.65);
+}
+
+.home-title-row {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-top: 14px;
+}
+
+.home-title-row h1 {
+	margin: 0;
+	font-size: clamp(28px, 3vw, 40px);
+	font-weight: 800;
+	line-height: 1.1;
+	letter-spacing: -1.2px;
+}
+
+.home-result-count {
+	padding: 5px 9px;
+	border: 1px solid #2a3342;
+	border-radius: 5px;
+	color: #758094;
+	background: #121721;
+	font: 600 10px "Inter Tight", sans-serif;
+	white-space: nowrap;
+}
+
+.home-heading p {
+	margin: 11px 0 0;
+	color: #747f91;
+	font-size: 13px;
+}
 
 /* 
     CATEGORY CHIPS: 
