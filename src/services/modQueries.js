@@ -23,3 +23,10 @@ async function buildIndex() {
 
     versions = [...versionSet].sort((a, b) => compareVersions(b, a)) // puts newest first
 }
+
+
+// only builds once regardless of how many times it gets called
+export function loadModIndex() {
+    if (!loading) loading = buildIndex()
+    return loading
+}
