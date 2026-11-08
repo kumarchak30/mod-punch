@@ -28,3 +28,4 @@ dist-ssr
 
 # generated data
 data/
+public/mods-lite.json
