@@ -37,3 +37,50 @@ const byVersion = time("Map: version -> sorted list", () => {
     for (const list of m.values()) list.sort(compareKeys);
     return m;
 });
+
+const exactMap = time("Map: exact key", () => {
+    const m = new Map();
+    for (const k of keys) m.set(`${k.version}|${k.modIndex}`, k.modIndex);
+    return m;
+});
+
+/* QUERY 1: top 20 optimization mods for a version */
+const versions = ["1.21.1", "1.20.1", "1.19.2", "1.16.5", "1.12.2"];
+const RUNS = 200; // 200 x 5 versions = 1000 queries
+
+console.log("\nTOP 20 FOR A VERSION (1000 queries)");
+time("array scan + sort", () => {
+    for (let r = 0; r < RUNS; r++) {
+        for (const v of versions) {
+            keys.filter((k) => k.version === v && isOptimization(k.modIndex))
+                .sort(compareKeys)
+                .slice(0, 20);
+        }
+    }
+});
+
+time("Map", () => {
+    for (let r = 0; r < RUNS; r++) {
+        for (const v of versions) {
+            const out = [];
+            for (const k of byVersion.get(v) || []) {
+                if (isOptimization(k.modIndex)) {
+                    out.push(k.modIndex);
+                    if (out.length === 20) break;
+                }
+            }
+        }
+    }
+});
+
+time("B+ tree rangeScan", () => {
+    for (let r = 0; r < RUNS; r++) {
+        for (const v of versions) {
+            tree.rangeScan(startOfVersion(v), {
+                stopWhen: (k) => k.version !== v,
+                filter: (k, i) => isOptimization(i),
+                limit: 20,
+            });
+        }
+    }
+});
