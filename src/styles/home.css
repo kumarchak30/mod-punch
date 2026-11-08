@@ -36,6 +36,31 @@
 	backdrop-filter: blur(18px);
 }
 
+.home-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	color: #f5f7f7;
+	text-decoration: none;
+}
+
+.home-brand-mark {
+	width: 40px;
+	height: 40px;
+	display: grid;
+	place-items: center;
+	border: 1px solid rgba(34,201,137,.5);
+	border-radius: 10px;
+}
+
+.home-brand-mark svg {
+	width: 22px;
+	height: 22px;
+	stroke: #22c989;
+	stroke-width: 1.5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
 /* 
 	HOME HEADING:
 	heading, eyebrow, eyebrow span, title-row, h1, count, p
