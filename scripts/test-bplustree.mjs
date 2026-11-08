@@ -31,3 +31,12 @@ const top = tree.rangeScan(startOfVersion(version), {
     limit: 5,
 });
 console.log(top.map((i) => mods[i].title));
+
+/* EXTRA TESTS */
+const k = { version: "1.21.1", downloads: 100, modIndex: 0 };
+console.log(small.search(k));  // 0
+console.log(small.delete(k));  // true
+console.log(small.search(k));  // undefined
+console.log(small.delete(k));  // false gone
+console.log(small.size);       // 11
+small.print((k) => k.downloads); // 100 is gone from the leaf
