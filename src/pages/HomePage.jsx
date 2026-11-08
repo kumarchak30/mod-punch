@@ -12,6 +12,7 @@ export default function HomePage() {
     const [error, setError] = useState("")
     const [version, setVersion] = useState("")
     const [category, setCategory] = useState("All")
+    const [limit, setLimit] = useState(20) // how many cards to show
     const { session } = UserAuth()
 
     useEffect(() => {
@@ -29,16 +30,23 @@ export default function HomePage() {
         version ||                                               // picked during this visit
         (versions.includes(savedVersion) ? savedVersion : "") || // saved in Supabase
         versions[0]                                              // newest
-    const { results, total } = getModsForVersion(currentVersion, { category })
+    const { results, total } = getModsForVersion(currentVersion, { category, limit }) // added limit
 
     async function handleVersionChange(v) {
         setVersion(v)
         setCategory("All") // start fresh for the new version
+        setLimit(20)       // back to the first 20
 
         const { error } = await supabase.auth.updateUser({
             data: { preferred_version: v },
         })
         if (error) console.error("Could not save version:", error)
+    }
+
+    // changing category also goes back to the first 20
+    function handleCategoryChange(c) {
+        setCategory(c)
+        setLimit(20)
     }
 
     return (
@@ -60,8 +68,19 @@ export default function HomePage() {
                     </div>
                     <p>Most downloaded first. Pick a category to narrow it down.</p>
                 </header>
-                <CategoryChips activeCategory={category} onChange={setCategory} />
+                <CategoryChips activeCategory={category} onChange={handleCategoryChange} />
                 <ModGrid mods={results} />
+
+                {results.length < total && (
+                    <button
+                        type="button"
+                        className="home-load-more"
+                        onClick={() => setLimit(limit + 20)}
+                    >
+                        Load more
+                        <span>{(total - results.length).toLocaleString()} left</span>
+                    </button>
+                )}
             </main>
         </div>
     )
