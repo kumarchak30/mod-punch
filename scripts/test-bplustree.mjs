@@ -1,4 +1,4 @@
-import { BPlusTree, startOfVersion } from "./src/data_structures/BPlusTree.js";
+import { BPlusTree, startOfVersion } from "../src/data_structures/BPlusTree.js";
 import { loadMods } from "./load-mods.mjs";
 
 // checking with small tree
