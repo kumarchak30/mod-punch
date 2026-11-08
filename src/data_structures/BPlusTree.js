@@ -88,6 +88,7 @@ export class BPlusTree {
         return node;
     }
 
+    // returns value of key being searched or undefined when not found
     search(key) {
         const leaf = this.findLeaf(key);
         const i = this.lowerBound(leaf.keys, key);
@@ -97,4 +98,15 @@ export class BPlusTree {
         return undefined;
     }
 
+    insert(key, value) {
+        const split = this.insertInto(this.root, key, value);
+
+        // make new root above the two halves
+        if (split) {
+            const newRoot = new InternalNode();
+            newRoot.keys.push(split.key);
+            newRoot.children.push(this.root, split.right);
+            this.root = newRoot;
+        }
+    }
 }
