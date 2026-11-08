@@ -6,6 +6,7 @@ import TopBar from "../components/home/TopBar"
 import CategoryChips from "../components/home/CategoryChips"
 import ModGrid from "../components/home/ModGrid"
 import { loadModIndex, getAllVersions, getModsForVersion } from "../services/modQueries"
+import { useSplayHistory } from "../hooks/useSplayHistory.js"
 
 export default function HomePage() {
     const [ready, setReady] = useState(false)
@@ -14,6 +15,14 @@ export default function HomePage() {
     const [category, setCategory] = useState("All")
     const [limit, setLimit] = useState(20) // how many cards to show
     const { session } = UserAuth()
+
+    // saved mods live in a splay tree shared with the profile page ("Your essentials")
+    const savedMods = useSplayHistory(`modpunch:${session?.user?.id ?? "guest"}:mods`)
+
+    function toggleSave(mod) {
+        if (savedMods.has(mod.project_id)) savedMods.remove(mod.project_id)
+        else savedMods.touch(mod.project_id, { title: mod.title, category: mod.tags?.[0] ?? "mod" })
+    }
 
     useEffect(() => {
         loadModIndex()
@@ -68,7 +77,7 @@ export default function HomePage() {
                     <p>Most downloaded first. Pick a category to narrow it down.</p>
                 </header>
                 <CategoryChips activeCategory={category} onChange={handleCategoryChange} />
-                <ModGrid mods={results} />
+                <ModGrid mods={results} isSaved={savedMods.has} onToggleSave={toggleSave} />
 
                 {results.length < total && (
                     <button

@@ -1,6 +1,6 @@
 import ModCard from "./ModCard"
 
-export default function ModGrid({ mods }) {
+export default function ModGrid({ mods, isSaved, onToggleSave }) {
     if (!mods?.length) {
         return (
         <div className="empty-results">
@@ -13,7 +13,12 @@ export default function ModGrid({ mods }) {
     return (
         <div className="mod-grid">
         {mods.map((mod) => (
-            <ModCard key={mod.project_id} mod={mod} />
+            <ModCard
+                key={mod.project_id}
+                mod={mod}
+                saved={isSaved?.(mod.project_id)}
+                onToggleSave={onToggleSave}
+            />
         ))}
         </div>
     )

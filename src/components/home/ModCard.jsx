@@ -12,7 +12,7 @@ function formatDownloads(downloads) {
     return String(downloads)
 }
 
-export default function ModCard({ mod }) {
+export default function ModCard({ mod, saved = false, onToggleSave }) {
     if (!mod) return null
     const mark = mod.title
     ? mod.title
@@ -49,9 +49,21 @@ export default function ModCard({ mod }) {
                     ))}
                 </div>
             )}
-            {mod.loaders?.length > 0 && (
-                <div className="loader-list">{mod.loaders.join(" · ")}</div>
-            )}
+            <div className="mod-card-footer">
+                {mod.loaders?.length > 0 && (
+                    <div className="loader-list">{mod.loaders.join(" · ")}</div>
+                )}
+                {onToggleSave && (
+                    <button
+                        type="button"
+                        className={`mod-save${saved ? " saved" : ""}`}
+                        aria-pressed={saved}
+                        onClick={() => onToggleSave(mod)}
+                    >
+                        {saved ? "✓ Saved" : "+ Save"}
+                    </button>
+                )}
+            </div>
         </article>
     )
 }
