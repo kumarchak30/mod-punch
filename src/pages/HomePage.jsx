@@ -1,5 +1,6 @@
 import "../styles/home.css"
 import { useEffect, useState } from "react"
+import TopBar from "../components/home/TopBar"
 import CategoryChips from "../components/home/CategoryChips"
 import ModGrid from "../components/home/ModGrid"
 import { loadModIndex, getAllVersions, getModsForVersion } from "../services/modQueries"
@@ -23,6 +24,7 @@ export default function HomePage() {
 
     return (
         <div className="home">
+            <TopBar />
             <main>
             <header className="home-heading">
                 <div className="home-eyebrow">
