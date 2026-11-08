@@ -86,6 +86,28 @@
 	gap: 10px; 
 }
 
+/* mod-card text styling */
+.mod-card h3 { 
+		margin: 15px 0 7px; 
+		color: #e4e9f0; 
+		font-size: 15px; 
+		font-weight: 800;
+		line-height: 1.2; 
+		letter-spacing: -.3px; 
+}
+
+.mod-card p { 
+		display: -webkit-box; 
+		min-height: 36px; 
+		margin: 0; 
+		overflow: hidden; 
+		color: #7b8596; 
+		font-size: 11px; 
+		line-height: 1.65; 
+		-webkit-box-orient: vertical; 
+		-webkit-line-clamp: 2; 
+}
+
 /* mod-mark section */
 .mod-mark { 
 	width: 42px; 
