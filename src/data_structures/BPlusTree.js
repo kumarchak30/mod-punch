@@ -42,3 +42,14 @@ class InternalNode {
 
 
 
+
+
+export class BPlusTree {
+    // B+ tree with 4 nodes max
+    constructor(maxKeys = 4, compare = compareKeys) {
+        this.maxKeys = maxKeys;
+        this.compare = compare;
+        this.root = new LeafNode();
+        this.size = 0;
+    }
+}
