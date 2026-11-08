@@ -36,6 +36,7 @@
 	backdrop-filter: blur(18px);
 }
 
+/* brand styling */
 .home-brand {
 	display: inline-flex;
 	align-items: center;
@@ -61,6 +62,38 @@
 	stroke-linecap: round;
 	stroke-linejoin: round;
 }
+
+/* wordmark styling */
+.home-wordmark {
+	display: flex;
+	flex-direction: column;
+}
+
+.home-wordmark strong {
+	font: 700 15px/1 "Silkscreen", sans-serif;
+	letter-spacing: -.3px;
+}
+
+.home-wordmark strong span,
+.home-wordmark sup {
+	color: #22c989;
+}
+
+.home-wordmark sup {
+	position: relative;
+	top: -.4em;
+	margin-left: 2px;
+	font-size: 7px;
+	letter-spacing: 0;
+}
+
+.home-wordmark small {
+	margin-top: 7px;
+	color: #7f899b;
+	font: 500 8px "Inter Tight", sans-serif;
+	letter-spacing: .34em;
+}
+
 /* 
 	HOME HEADING:
 	heading, eyebrow, eyebrow span, title-row, h1, count, p
