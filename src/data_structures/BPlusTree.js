@@ -145,4 +145,21 @@ export class BPlusTree {
         if (node.keys.length > this.maxKeys) return this.splitInternal(node);
         return null;
     }
+
+    /* 
+        LEAF SPLIT:
+        right half moves to the new leaf -> first key copied up
+     */
+    splitLeaf(leaf) {
+        const mid = Math.floor(leaf.keys.length / 2);
+        const right = new LeafNode();
+
+        right.keys = leaf.keys.splice(mid);
+        right.values = leaf.values.splice(mid);
+
+        right.next = leaf.next;
+        leaf.next = right;
+
+        return { key: right.keys[0], right };
+    }
 }
