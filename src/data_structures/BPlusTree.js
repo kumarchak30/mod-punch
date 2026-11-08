@@ -79,4 +79,12 @@ export class BPlusTree {
         return l;
     }
 
+    // root down to leaf until it reaches where the key belongs
+    findLeaf(key) {
+        let node = this.root;
+        while (!node.isLeaf) {
+            node = node.children[this.upperBound(node.keys, key)];
+        }
+        return node;
+    }
 }
