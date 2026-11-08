@@ -52,4 +52,17 @@ export class BPlusTree {
         this.root = new LeafNode();
         this.size = 0;
     }
+
+
+    // binary search lower bound for 1st index i when keys[i] >= key
+    lowerBound(keys, key) {
+        let l = 0;
+        let r = keys.length;
+        while (l < r) {
+            const mid = Math.floor((l + r) / 2);
+            if (this.compare(keys[mid], key) < 0) l = mid + 1;
+            else r = mid;
+        }
+        return l;
+    }
 }
