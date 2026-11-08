@@ -1,29 +1,32 @@
 import { Link } from "react-router-dom"
+import VersionPicker from "./VersionPicker"
 
-// same icon as the sign-in page!
+// same icon as the sign-in page
 function LayersIcon() {
     return (
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
-        <path d="m12 3 8 4.5-8 4.5-8-4.5L12 3Z" />
-        <path d="m4 12 8 4.5 8-4.5M4 16.5l8 4.5 8-4.5" />
+            <path d="m12 3 8 4.5-8 4.5-8-4.5L12 3Z" />
+            <path d="m4 12 8 4.5 8-4.5M4 16.5l8 4.5 8-4.5" />
         </svg>
     )
 }
 
-export default function TopBar() {
+export default function TopBar({ versions, version, onVersionChange }) {
     return (
         <header className="home-topbar">
-        <Link className="home-brand" to="/dashboard" aria-label="ModPunch home">
-            <span className="home-brand-mark">
-            <LayersIcon />
-            </span>
-            <span className="home-wordmark">
-            <strong>
-                MOD<span>PUNCH</span><sup>®</sup>
-            </strong>
-            <small>ORGANIZER</small>
-            </span>
-        </Link>
+            <Link className="home-brand" to="/dashboard" aria-label="ModPunch home">
+                <span className="home-brand-mark">
+                    <LayersIcon />
+                </span>
+                <span className="home-wordmark">
+                    <strong>
+                        MOD<span>PUNCH</span><sup>®</sup>
+                    </strong>
+                    <small>ORGANIZER</small>
+                </span>
+            </Link>
+
+            <VersionPicker versions={versions} value={version} onChange={onVersionChange} />
         </header>
     )
 }
