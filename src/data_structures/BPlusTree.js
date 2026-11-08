@@ -162,4 +162,25 @@ export class BPlusTree {
 
         return { key: right.keys[0], right };
     }
+
+
+    /*
+        INTERNAL SPLIT:
+        middle key moves up the B+ tree
+        then gets removed from this level 
+    */
+    splitInternal(node) {
+        const mid = Math.floor(node.keys.length / 2);
+        const upKey = node.keys[mid];
+        const right = new InternalNode();
+
+        right.keys = node.keys.splice(mid + 1);
+        right.children = node.children.splice(mid + 1);
+
+        // removes upKey from the left B+ tree node
+        node.keys.pop(); 
+
+        return { key: upKey, right };
+    }
+
 }
