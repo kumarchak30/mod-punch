@@ -257,6 +257,33 @@
     font-size: 12px;
     text-align: center;
 }
+
+/* topbar actions */
+.home-topbar-actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.home-sign-out {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #293140;
+    border-radius: 6px;
+    color: #939dad;
+    background: #131821;
+    font: 600 12px "Inter Tight", sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 150ms ease;
+}
+
+.home-sign-out:hover {
+    color: #d8e1ec;
+    border-color: #3b4658;
+}
+
+
 /* 
     CATEGORY CHIPS: 
     chip, button, button:hover, button:active
