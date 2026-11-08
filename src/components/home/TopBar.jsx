@@ -25,13 +25,13 @@ export default function TopBar({ versions, version, onVersionChange }) {
         <header className="home-topbar">
             <Link className="home-brand" to="/dashboard" aria-label="ModPunch home">
                 <span className="home-brand-mark">
-                    <LayersIcon />
+                    <img src="/favicon.png" alt="" />
                 </span>
                 <span className="home-wordmark">
                     <strong>
                         MOD<span>PUNCH</span><sup>®</sup>
                     </strong>
-                    <small>ORGANIZER</small>
+                    <small>MINECRAFT MODS</small>
                 </span>
             </Link>
 

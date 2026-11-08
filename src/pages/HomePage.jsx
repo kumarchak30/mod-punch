@@ -59,8 +59,7 @@ export default function HomePage() {
             <main>
                 <header className="home-heading">
                     <div className="home-eyebrow">
-                        <span />
-                        MOD BROWSER
+                        <div className="home-eyebrow">MOD BROWSER</div>
                     </div>
                     <div className="home-title-row">
                         <h1>Mods for {currentVersion}</h1>

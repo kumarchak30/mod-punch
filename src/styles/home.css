@@ -4,7 +4,7 @@
 /* page wrapper scoped in a way that will not interfere or clash with register/login pages */
 .home {
 	min-height: 100vh;
-	background: #0b0e14;
+	background: #171717;
 	color: #e8ebf2; 
 	font-family: "Inter Tight", sans-serif;
 }
@@ -47,21 +47,17 @@
 }
 
 .home-brand-mark {
-	width: 40px;
-	height: 40px;
-	display: grid;
-	place-items: center;
-	border: 1px solid rgba(34,201,137,.5);
-	border-radius: 10px;
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
 }
 
-.home-brand-mark svg {
-	width: 22px;
-	height: 22px;
-	stroke: #22c989;
-	stroke-width: 1.5;
-	stroke-linecap: round;
-	stroke-linejoin: round;
+.home-brand-mark img {
+    width: 56px;
+    height: 56px;
+    display: block;
+    image-rendering: pixelated;
 }
 
 /* wordmark styling */
@@ -71,7 +67,7 @@
 }
 
 .home-wordmark strong {
-	font: 700 15px/1 "Silkscreen", sans-serif;
+    font: 700 17px/1 "Silkscreen", sans-serif;
 	letter-spacing: -.3px;
 }
 
@@ -91,7 +87,7 @@
 .home-wordmark small {
 	margin-top: 7px;
 	color: #7f899b;
-	font: 500 8px "Inter Tight", sans-serif;
+    font: 500 9px "Inter Tight", sans-serif;
 	letter-spacing: .34em;
 }
 
@@ -105,12 +101,9 @@
 }
 
 .home-eyebrow {
-	display: flex;
-	align-items: center;
-	gap: 9px;
-	color: #657184;
-	font: 600 10px "Inter Tight", sans-serif;
-	letter-spacing: 1.5px;
+    color: #657184;
+    font: 400 11px "Silkscreen", sans-serif;
+    letter-spacing: 1px;
 }
 
 .home-eyebrow span {
@@ -148,7 +141,7 @@
 
 .home-heading p {
 	margin: 11px 0 0;
-	color: #747f91;
+	color: #7c7c7c;
 	font-size: 13px;
 }
 
@@ -326,22 +319,56 @@
 */
 
 /* mod-card section */
-.mod-card { 
-	min-width: 0; 
-	min-height: 228px; 
-	display: flex; 
-	flex-direction: column; 
-	padding: 17px; 
-	border: 1px solid #232a38; 
-	border-radius: 9px; 
-	background: radial-gradient(circle at 15% 0, rgba(45,212,191,.05), transparent 35%), linear-gradient(145deg, rgba(22,27,38,.94), rgba(16,20,28,.97));
-	transition: transform 170ms ease, border-color 170ms ease, box-shadow 170ms ease; 
+.mod-card {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    min-height: 228px;
+    display: flex;
+    flex-direction: column;
+    padding: 17px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 12px;
+    background:
+        rgba(0, 0, 0, 0.663);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.14),
+        0 8px 24px rgba(0,0,0,.25);
+    backdrop-filter: blur(14px) saturate(140%);
+    transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+/* a soft glare that sweeps across the card on hover */
+.mod-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255,255,255,.08), transparent);
+    transform: skewX(-15deg);
+    transition: left 650ms ease;
+    pointer-events: none;
+}
+
+.mod-card:hover::before {
+    left: 130%;
 }
 
 .mod-card:hover {
-	transform: translateY(-3px); 
-	border-color: #384457; 
-	box-shadow: 0 12px 28px rgba(0,0,0,.23); 
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.2),
+        0 14px 32px rgba(0,0,0,.35);
+}
+
+/* skip the sweep for people who turn off animations in their system settings */
+@media (prefers-reduced-motion: reduce) {
+    .mod-card::before {
+        transition: none;
+    }
 }
 
 .mod-card-top { 
@@ -516,10 +543,25 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
-@media (max-width: 480px) { 
-	.mod-grid {
-		grid-template-columns: 1fr; 
-	} 
+
+@media (max-width: 480px) {
+    .mod-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 9px;
+    }
+
+    .home-topbar-actions {
+        gap: 8px;
+    }
+
+    .home-version-picker {
+        width: 120px;
+    }
 }
 
 .home-title-row {

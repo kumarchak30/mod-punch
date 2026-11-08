@@ -98,14 +98,13 @@ export default function Signin() {
         <div className="intro-content">
           <a className="brand" href="#" aria-label="ModPunch Organizer home">
             <span className="brand-mark">
-              <LayersIcon />
+              <img className="brand-logo" src="/favicon.png" alt="" />
             </span>
             <span className="wordmark">
               <strong>
                 MOD<span>PUNCH</span><sup>®</sup>
               </strong>
-              <small>ORGANIZER</small>
-            </span>
+              <small>MINECRAFT MODS</small>            </span>
           </a>
 
           <div className="intro-copy">
