@@ -34,3 +34,20 @@ export function loadModIndex() {
 export function getAllVersions() {
     return versions
 }
+
+// goes through category, checks offset and keeps into account the limit and then accesses modIndex to then provide results of the total mods
+export function getModsForVersion(version, { category = "All", offset = 0, limit = 20 } = {}) {
+    const tag = category.toLowerCase()
+    const options = {
+        stopWhen: (key) => key.version !== version,
+        filter: category === "All" ? undefined : (key, modIndex) => mods[modIndex].tags.includes(tag),
+    }
+
+    const results = tree
+        .rangeScan(startOfVersion(version), { ...options, offset, limit })
+        .map((modIndex) => mods[modIndex])
+
+    const total = tree.rangeScan(startOfVersion(version), options).length
+
+    return { results, total }
+}
