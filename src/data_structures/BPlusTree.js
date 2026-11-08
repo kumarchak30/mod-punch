@@ -109,4 +109,40 @@ export class BPlusTree {
             this.root = newRoot;
         }
     }
+
+    /* 
+        insertInto logic:
+        recursively insert node with key + value pair
+        returns null, or { key, right } if this node is split
+    */
+    insertInto(node, key, value) {
+        if (node.isLeaf) {
+            const i = this.lowerBound(node.keys, key);
+
+            // update value if same key is already there
+            if (i < node.keys.length && this.compare(node.keys[i], key) === 0) {
+                node.values[i] = value;
+                return null;
+            }
+
+            node.keys.splice(i, 0, key);
+            node.values.splice(i, 0, value);
+            this.size++;
+
+            if (node.keys.length > this.maxKeys) return this.splitLeaf(node);
+            return null;
+        }
+
+        // go down into the right child (internal node)
+        const i = this.upperBound(node.keys, key);
+        const split = this.insertInto(node.children[i], key, value);
+        if (!split) return null;
+
+        // add its separator and new right child here by splicing/splitting
+        node.keys.splice(i, 0, split.key);
+        node.children.splice(i + 1, 0, split.right); 
+
+        if (node.keys.length > this.maxKeys) return this.splitInternal(node);
+        return null;
+    }
 }
