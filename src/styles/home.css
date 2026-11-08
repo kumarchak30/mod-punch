@@ -180,6 +180,37 @@
 	gap: 12px; 
 }
 
+/* handles empty stat for mod grid */
+.empty-results {
+	min-height: 280px;
+	display: flex;
+	flex-direction: column; 
+	align-items: center; 
+	justify-content: center; 
+	border: 1px dashed #293242; 
+	border-radius: 9px; 
+	color: #657083; 
+	background: rgba(17,21,29,.45); 
+	text-align: center; 
+}
+
+.empty-results > span { 
+	color: #2dd4bf; 
+	font: 800 18px "Inter Tight", sans-serif; 
+}
+
+.empty-results h2 { 
+	margin: 12px 0 5px; 
+	color: #aeb7c4; 
+	font-size: 15px; 
+	font-weight: 800;
+}
+
+.empty-results p { 
+	margin: 0; 
+	font-size: 11px; 
+}
+
 /* RESPONSIVE GRID TO DISPLAY THE MODS */
 @media (max-width: 980px) { 
 	.mod-grid { 
