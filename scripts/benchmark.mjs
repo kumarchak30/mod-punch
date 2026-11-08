@@ -1,4 +1,4 @@
-import { BPlusTree, startOfVersion, compareKeys } from "../src/data_structures/bPlusTree.js";
+import { BPlusTree, startOfVersion, compareKeys } from "../src/data_structures/BPlusTree.js";
 import { compareVersions } from "../src/data_structures/compareModVersion.js";
 import { loadMods } from "./load-mods.mjs";
 
