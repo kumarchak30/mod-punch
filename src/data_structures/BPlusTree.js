@@ -183,4 +183,42 @@ export class BPlusTree {
         return { key: upKey, right };
     }
 
+
+    /*
+        go through the linked leaves starting from startKey
+        stopWhen(key) stop = true like wrong version
+        filter(key, value) skip = false such as wrong category
+        offset + limit is for paging
+        returns an array of values (for the mods)
+    */
+    rangeScan(startKey, { stopWhen, filter, offset = 0, limit = Infinity } = {}) {
+        const results = [];
+        let skipped = 0;
+
+        let leaf = this.findLeaf(startKey);
+        let i = this.lowerBound(leaf.keys, startKey);
+
+        while (leaf) {
+            while (i < leaf.keys.length) {
+                const key = leaf.keys[i];
+                const value = leaf.values[i];
+
+                if (stopWhen && stopWhen(key)) return results;
+
+                if (!filter || filter(key, value)) {
+                    if (skipped < offset) {
+                        skipped++;
+                    } else {
+                        results.push(value);
+                        if (results.length >= limit) return results;
+                    }
+                }
+                i++;
+            }
+            leaf = leaf.next;
+            i = 0;
+        }
+        return results;
+    }
+
 }
