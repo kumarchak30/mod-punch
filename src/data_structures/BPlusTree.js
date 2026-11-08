@@ -87,4 +87,14 @@ export class BPlusTree {
         }
         return node;
     }
+
+    search(key) {
+        const leaf = this.findLeaf(key);
+        const i = this.lowerBound(leaf.keys, key);
+        if (i < leaf.keys.length && this.compare(leaf.keys[i], key) === 0) {
+            return leaf.values[i];
+        }
+        return undefined;
+    }
+
 }
