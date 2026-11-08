@@ -19,7 +19,10 @@
 }
 
 
-/* CATEGORY CHIPS: chip, button, button:hover, button:active */
+/* 
+    CATEGORY CHIPS: 
+    chip, button, button:hover, button:active
+*/
 .category-chips {
 		display: flex;
 		flex-wrap: wrap;
@@ -52,8 +55,12 @@
 }
 
 
-/* MOD CARD: mod-card, mod-card:hover, mod-card-top */
+/* 
+    MOD CARD:
+    mod-card, mod-card:hover, mod-card-top 
+*/
 
+/* mod-card section */
 .mod-card { 
 		min-width: 0; 
 		min-height: 228px; 
@@ -78,3 +85,31 @@
 		justify-content: space-between; 
 		gap: 10px; 
 }
+
+/* mod-mark section */
+.mod-mark { 
+		width: 42px; 
+		height: 42px; 
+		flex: 0 0 auto; 
+		display: grid; 
+		place-items: center; 
+		overflow: hidden; 
+		position: relative; 
+		border: 1px solid rgba(96,218,224,.25); 
+		border-radius: 8px; 
+		color: #60dae0; 
+		background: #15343c; 
+		font: 800 12px "Inter Tight", sans-serif;
+}
+
+.mod-mark::after { 
+		content: "";
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border: 1px solid currentColor;
+		opacity: .2;
+		transform: rotate(45deg);
+}
+
+.mod-mark span { z-index: 1; }
