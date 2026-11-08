@@ -100,3 +100,25 @@ time("Map (10000 lookups)", () => {
 time("B+ tree search (10000 lookups)", () => {
     for (const s of sample) tree.search(s);
 });
+
+
+/* QUERY 3: version range for example all of 1.20.x */
+const lo = "1.20";
+const hi = "1.21";
+
+console.log("\nRANGE: every mod for 1.20 up to (not including) 1.21");
+time("array scan", () =>
+    keys.filter((k) => compareVersions(k.version, lo) >= 0 && compareVersions(k.version, hi) < 0)
+);
+time("Map (check every version key)", () => {
+    const out = [];
+    for (const [v, list] of byVersion) {
+        if (compareVersions(v, lo) >= 0 && compareVersions(v, hi) < 0) {
+            for (const k of list) out.push(k.modIndex);
+        }
+    }
+    return out;
+});
+time("B+ tree rangeScan", () =>
+    tree.rangeScan(startOfVersion(lo), { stopWhen: (k) => compareVersions(k.version, hi) >= 0 })
+);
