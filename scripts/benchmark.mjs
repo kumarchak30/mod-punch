@@ -84,3 +84,19 @@ time("B+ tree rangeScan", () => {
         }
     }
 });
+
+
+/* QUERY 2: looking up the exact key being searched for */
+const sample = [];
+for (let i = 0; i < 10000; i++) sample.push(keys[(i * 7919) % keys.length]);
+
+console.log("\nEXACT LOOKUP");
+time("array find (200 lookups only)", () => {
+    for (const s of sample.slice(0, 200)) keys.find((k) => compareKeys(k, s) === 0);
+});
+time("Map (10000 lookups)", () => {
+    for (const s of sample) exactMap.get(`${s.version}|${s.modIndex}`);
+});
+time("B+ tree search (10000 lookups)", () => {
+    for (const s of sample) tree.search(s);
+});
