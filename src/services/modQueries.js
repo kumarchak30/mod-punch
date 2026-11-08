@@ -36,7 +36,7 @@ export function getAllVersions() {
 }
 
 /* 
-    getModsForVersion:
+    GET MODS FOR VERSION:
     scans the tree for one version (already sorted by downloads),
     keeps mods in the chosen category, and returns one page of results plus the total count
 */ 
