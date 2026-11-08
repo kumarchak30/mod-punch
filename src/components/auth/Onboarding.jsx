@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext.jsx";
+import { UserAuth } from "../../context/AuthContext.jsx";
 
 function MonitorIcon() {
   return (
