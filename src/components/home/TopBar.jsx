@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { UserAuth } from "../../context/AuthContext.jsx"
 import VersionPicker from "./VersionPicker"
 
 // same icon as the sign-in page
@@ -12,6 +13,14 @@ function LayersIcon() {
 }
 
 export default function TopBar({ versions, version, onVersionChange }) {
+    const { signOut } = UserAuth()
+    const navigate = useNavigate()
+
+    async function handleSignOut() {
+        await signOut()
+        navigate("/signin")
+    }
+
     return (
         <header className="home-topbar">
             <Link className="home-brand" to="/dashboard" aria-label="ModPunch home">
@@ -26,7 +35,12 @@ export default function TopBar({ versions, version, onVersionChange }) {
                 </span>
             </Link>
 
-            <VersionPicker versions={versions} value={version} onChange={onVersionChange} />
+            <div className="home-topbar-actions">
+                <VersionPicker versions={versions} value={version} onChange={onVersionChange} />
+                <button type="button" className="home-sign-out" onClick={handleSignOut}>
+                    Sign out
+                </button>
+            </div>
         </header>
     )
 }
