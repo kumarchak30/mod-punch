@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext.jsx";
+import { supabase } from "../supabaseClient";
 
 function LayersIcon({ small = false }) {
   return (
@@ -88,6 +89,19 @@ export default function Signin() {
       setLoading(false);
     }
   }
+
+  // adds microsoft login handling connecting with azure through supabase
+  async function handleMicrosoftLogin() {
+  setError("");
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "azure",
+    options: {
+      scopes: "email",
+      redirectTo: `${window.location.origin}/dashboard`,
+    },
+  });
+  if (error) setError(error.message);
+}
 
 
   return (

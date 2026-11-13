@@ -34,7 +34,7 @@ The ModPunch logo and favicon are original pixel art by [Natalie Ortiz](https://
 - Browse mods without an account (sign in only to save your version and profile)
 - Pixel-art covers on mod cards
 - Search with autocomplete
-- PC compatibility checks based on your saved specs
+- Sync recent searches and saved mods to your account, so they follow you across devices
 
 ## Running locally
 
