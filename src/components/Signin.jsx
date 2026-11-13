@@ -181,10 +181,11 @@ export default function Signin() {
                     </p>
                   </div>
                 </div>
-                <button className="primary-button" type="button">
-                  <span>Continue with Microsoft</span>
-                  <ArrowIcon />
-                </button>
+                  <button className="primary-button" type="button" onClick={handleMicrosoftLogin}>
+                    <span>Continue with Microsoft</span>
+                    <ArrowIcon />
+                  </button>
+                  {error && <p role="alert">{error}</p>}
               </div>
               <p className="security-note">
                 Minecraft accounts are managed securely through Microsoft.
