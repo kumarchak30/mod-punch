@@ -19,8 +19,7 @@
 }
 
 /* page/background */
-/* ===== Theme: light ===== */
-/* ===== Theme: light ===== */
+/* Theme: light */
 .auth-page {
     --login-bg: #3a2918d3;
     --login-accent:  #02a131;
@@ -209,6 +208,23 @@
     margin: 0;
     color: var(--login-error);
     font-size: 0.85rem;
+}
+
+.auth-success {
+    margin: 4px 0 0;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(31, 168, 116, 0.1);
+    color: var(--login-accent-hover);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.auth-terms {
+    margin: 4px 0 0;
+    color: var(--login-muted);
+    font-size: 0.8rem;
+    text-align: center;
 }
 
 .auth-submit {
