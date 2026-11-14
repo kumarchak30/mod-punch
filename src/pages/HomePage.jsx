@@ -67,9 +67,7 @@ export default function HomePage() {
             />
             <main>
                 <header className="home-heading">
-                    <div className="home-eyebrow">
-                        <div className="home-eyebrow">MOD BROWSER</div>
-                    </div>
+                    <div className="home-eyebrow">MOD BROWSER</div>
                     <div className="home-title-row">
                         <h1>Mods for {currentVersion}</h1>
                         <span className="home-result-count">{total.toLocaleString()} results</span>
